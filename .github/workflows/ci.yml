@@ -3,6 +3,8 @@ name: Run Playwright Script
 on:
   push:        # Trigger when code is pushed
   pull_request: # Also run on PRs
+  schedule:
+    - cron: "0 * * * *"
 
 jobs:
   run-script:
