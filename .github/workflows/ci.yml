@@ -54,8 +54,8 @@ jobs:
 
       - name: Commit playlist to repo
         run: |
-          git config --global archau "github-actions[bot]"
-          git config --global archau@hotmail.com "github-actions[bot]@users.noreply.github.com"
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
           git add live_tv_channels.m3u
           git commit -m "Update playlist"
           git push
