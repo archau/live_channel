@@ -1,4 +1,2 @@
 playwright==1.59.0
-requests
-re
-
+requests=2.34.0
