@@ -28,5 +28,13 @@ jobs:
       - name: Run script
         run: |
           python live_channels.py
+      
+      - name: Upload playlist artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: live-tv-channels
+          path: live_tv_channels.m3u
+
+    
 
 
