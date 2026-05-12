@@ -1,3 +1,6 @@
+permissions:
+  contents: write
+
 name: Run Playwright Script
 
 on:
@@ -28,6 +31,12 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-pip-
 
+      - name: Cache Playwright browsers
+        uses: actions/cache@v4
+        with:
+          path: ~/.cache/ms-playwright
+          key: ${{ runner.os }}-playwright
+
       - name: Install dependencies
         run: |
           pip install -r requirements.txt
@@ -43,6 +52,11 @@ jobs:
           name: live-tv-channels
           path: live_tv_channels.m3u
 
-    
-
+      - name: Commit playlist to repo
+        run: |
+          git config --global archau "github-actions[bot]"
+          git config --global archau@hotmail.com "github-actions[bot]@users.noreply.github.com"
+          git add live_tv_channels.m3u
+          git commit -m "Update playlist"
+          git push
 
